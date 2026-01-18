@@ -1,111 +1,113 @@
-<div align="center">
+<div align="center" style="padding: 4rem 0;">
 
-  <img 
-    src="https://via.placeholder.com/1600x500/0f1224/00bcd4?text=TrustMonitor" 
-    alt="TrustMonitor" 
-    width="100%" 
-    style="border-radius: 16px; margin-bottom: 3rem;"
-  >
-
-  <h1 style="font-size: 3.8rem; margin: 0; letter-spacing: -1px;">
+  <h1 style="font-size: 3.5rem; margin: 0; letter-spacing: -0.8px; color: #111827;">
     TrustMonitor
   </h1>
 
-  <p style="font-size: 1.6rem; color: #a0b0ff; max-width: 680px; margin: 1.5rem auto 3rem; line-height: 1.5;">
-    Real-time API monitoring that actually prevents revenue loss.<br>
-    Instant alerts. Forensic logs. Clean dashboards. Built for builders who ship.
+  <p style="font-size: 1.5rem; color: #4b5563; max-width: 680px; margin: 1.5rem auto 0; line-height: 1.6;">
+    Real-time monitoring for API endpoints and services.
   </p>
 
-  <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 4rem;">
-    <a href="https://trustmonitor-landing-secengineerx.vercel.app">
-      <img src="https://img.shields.io/badge/Visit%20Live%20Site-00bcd4?style=for-the-badge&logo=vercel&logoColor=white&labelColor=00bcd4" alt="Live Site">
-    </a>
-    <a href="https://github.com/SecEngineerX/trustmonitor-landing">
-      <img src="https://img.shields.io/github/stars/SecEngineerX/trustmonitor-landing?style=for-the-badge&logo=github&logoColor=white&labelColor=222" alt="Stars">
-    </a>
-  </div>
-
-</div>
-
-<br>
-
-<div style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">
-
-  <h2 style="font-size: 2.6rem; text-align: center; margin: 6rem 0 4rem; color: #ffffff;">
-    Built Different
-  </h2>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; text-align: left;">
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Sub-second Detection</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        We catch failures before your users do. No polling delays, no blind spots.
-      </p>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Proof You Can Defend</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        Full request/response captures with exact timestamps. Exportable in seconds.
-      </p>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Alerts That Actually Arrive</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        Email, Slack, Telegram, Discord, custom webhooks — delivered reliably.
-      </p>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Dashboards That Respect Your Time</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        Glanceable real-time metrics. Historical trends. Mobile-first.
-      </p>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Pricing That Makes Sense</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        Free Starter (5 endpoints), Pro $49/mo (50+), Enterprise custom.
-      </p>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,188,212,0.15);">
-      <h3 style="color: #00bcd4; font-size: 1.5rem; margin-bottom: 1rem;">Zero Vendor Lock-in</h3>
-      <p style="color: #d0d8ff; line-height: 1.6;">
-        Open webhook format. Portable data. No heavy agents or SDKs.
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
-<br><br><br>
-
-<div align="center">
-
-  <h2 style="font-size: 2.8rem; margin: 6rem 0 2rem;">
-    Experience TrustMonitor Today
-  </h2>
-
-  <p style="font-size: 1.4rem; color: #a0b0ff; max-width: 720px; margin: 0 auto 2.5rem;">
-    See the early access landing page — clean, fast, real waitlist in action.
+  <p style="font-size: 1.1rem; color: #6b7280; max-width: 620px; margin: 0.75rem auto 3rem;">
+    Immediate failure detection, complete request logging, and dependable alerting — built for teams and developers who require consistent visibility.
   </p>
 
-  <a href="https://trustmonitor-landing-secengineerx.vercel.app">
-    <img src="https://img.shields.io/badge/Go%20to%20Live%20Site-00bcd4?style=for-the-badge&logo=vercel&logoColor=white&labelColor=1a237e" alt="Live Site">
+  <a href="https://trustmonitor-landing-secengineerx.vercel.app" style="text-decoration: none;">
+    <span style="
+      display: inline-block;
+      background: #111827;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: background 0.2s;
+    ">View Live Site</span>
   </a>
 
 </div>
 
-<br><br><br>
+<div style="max-width: 960px; margin: 6rem auto; padding: 0 1.5rem;">
 
-<div align="center" style="margin: 8rem 0 4rem; color: #8899cc; font-size: 1rem; line-height: 1.8;">
+  <h2 style="font-size: 2.25rem; text-align: center; margin-bottom: 3rem; color: #111827;">
+    Core Capabilities
+  </h2>
 
-  Built with precision for people who ship.<br>
-  © 2026 TrustMonitor — All rights reserved
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Sub-second Issue Detection</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        Immediate identification of status errors, timeouts, and response inconsistencies.
+      </p>
+    </div>
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Complete Request Logging</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        Full capture of requests and responses including headers, body, and precise timestamps.
+      </p>
+    </div>
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Reliable Multi-Channel Alerts</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        Notifications delivered via email, Slack, Telegram, webhooks, and other channels.
+      </p>
+    </div>
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Clear Performance Dashboards</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        Real-time metrics and historical trends, fully responsive across devices.
+      </p>
+    </div>
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Exportable Reports</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        One-click CSV and PDF exports for audits, debugging, and stakeholder reporting.
+      </p>
+    </div>
+
+    <div style="padding: 1.75rem; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <h3 style="font-size: 1.35rem; margin: 0 0 1rem; color: #111827;">Transparent Pricing</h3>
+      <p style="color: #4b5563; line-height: 1.6; margin: 0;">
+        Free starter tier, Pro plan at $49/month, and custom Enterprise options.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<div align="center" style="margin: 8rem 0 4rem;">
+
+  <h2 style="font-size: 2.25rem; margin-bottom: 1.5rem; color: #111827;">
+    Early Access
+  </h2>
+
+  <p style="font-size: 1.15rem; color: #4b5563; max-width: 600px; margin: 0 auto 2.5rem;">
+    Join the waitlist to be among the first to access the platform.
+  </p>
+
+  <a href="https://trustmonitor-landing-secengineerx.vercel.app#waitlist" style="text-decoration: none;">
+    <span style="
+      display: inline-block;
+      background: #111827;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    ">Join the Waitlist</span>
+  </a>
+
+</div>
+
+<div align="center" style="margin-top: 8rem; padding: 3rem 0; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.95rem;">
+
+  © 2026 TrustMonitor<br>
+  Developed by SecEngineerX
 
 </div>
