@@ -1,229 +1,124 @@
-TRUSTMONITOR LANDING PAGE
-FULL SYSTEM SPECIFICATION
-Version 1.0
+TRUSTMONITOR LANDING PAGE — 72-HOUR EXECUTION BLUEPRINT
+Version 4.0
+Goal: Convert CTOs & Agencies Instantly
 
-This document defines the exact structure, styling, tone, and layout rules.
-
-No deviation allowed.
-
-------------------------------------------------------------
-1. COLOR SYSTEM
-------------------------------------------------------------
-
-Background:
-#FFFFFF (Primary background)
-#F7F8FA (Section alternate background)
-
-Primary Text:
-#0F172A (Dark slate)
-
-Secondary Text:
-#475569 (Muted slate)
-
-Accent Color:
-#7F1D1D (Deep professional red)
-
-Accent Hover:
-#991B1B
-
-Border / Divider:
-#E2E8F0
-
-NO OTHER COLORS ALLOWED.
-
-No gradients.
-No shadows beyond subtle elevation (max 4px blur).
-No bright blues.
-No startup purple.
+TARGET:
+- CTOs, agency owners, dev leads
+- Busy, skeptical, paying for monitoring
+- Key triggers: Financial risk, reputation, career exposure
 
 ------------------------------------------------------------
-2. TYPOGRAPHY
+DEV RESPONSIBILITIES
 ------------------------------------------------------------
 
-Font Stack:
-
-Primary:
-Inter, system-ui, -apple-system, sans-serif
-
-Headings:
-font-weight: 600 or 700
-letter-spacing: -0.02em
-
-Body:
-font-weight: 400
-line-height: 1.6
-
-Sizes:
-
-H1: 56px desktop / 36px mobile
-H2: 32px desktop / 24px mobile
-H3: 22px
-Body: 16px–18px
-
-No decorative fonts.
-No italic marketing emphasis.
-No emoji.
+Dev 1: HERO + LIVE TICKER + LAYOUT (Most Critical)
+------------------------------------------------------------
+1. Hero H1 (Desktop: 56px, Mobile: 36px)
+   - "WHEN YOUR CURRENT MONITORING FAILS, WHO PAYS? (HINT: YOU DO.)"
+2. Subhead: "Your dashboard is a placebo. We put money where it matters: on your SLA."
+3. Primary CTA: "DEMAND THE CONTRACT"
+4. Secondary CTA: "COMPARE LIABILITY MODELS"
+5. Live Ticker:
+   - Pulls from JSON or real API
+   - Rotates every 30 sec: Last Payout, Incident ID, Hours Ago
+   - Shows: We actually pay. Often.
+6. Layout: global CSS variables, responsive grid, typography
+7. No images. Text-only, forceful messaging.
 
 ------------------------------------------------------------
-3. PAGE STRUCTURE
+Dev 2: THE LIE + COMPARISON TABLE
 ------------------------------------------------------------
-
-HTML BODY STRUCTURE:
-
-<body>
-  <header></header>
-  <main>
-    <section id="hero"></section>
-    <section id="problem"></section>
-    <section id="model"></section>
-    <section id="comparison"></section>
-    <section id="proof"></section>
-    <section id="cto-questions"></section>
-    <section id="risk-calculator"></section>
-    <section id="pilot"></section>
-    <section id="final-decision"></section>
-  </main>
-  <footer></footer>
-</body>
-
-No extra sections.
-No rearranging.
+1. Lie Section:
+   - Title: "THE $0 LIABILITY CLAUSE IN YOUR CURRENT MONITORING CONTRACT"
+   - Bullets: missed alerts, SSL expiry, payment API failures
+   - Red accent highlight: #7F1D1D
+2. Comparison Table:
+   Feature | Typical Monitoring | TrustMonitor | What This Means
+   - Add row: SLA Enforceability | Marketing language | Legally binding | Your lawyer vs. their lawyer
+3. Mobile: horizontal scroll with sticky first column
+4. Desktop: full width, readable, scannable
 
 ------------------------------------------------------------
-4. HERO SECTION CONTENT (EXACT COPY)
+Dev 3: PROOF + LEDGER + EVIDENCE
 ------------------------------------------------------------
-
-H1:
-Monitoring With Financial Accountability.
-
-Paragraph:
-Most monitoring vendors notify you.
-We contractually share the risk when we fail.
-
-Primary Button:
-Review Our SLA
-
-Secondary Button:
-Compare Liability Models
+1. Ledger Table:
+   - Monospaced font, clean borders (#E2E8F0)
+   - Status badges: "Paid" (#0F172A)
+2. Proof of Reserve:
+   - Show escrow balance (static acceptable for MVP)
+   - Verified date and auditor info
+3. Monitoring Regions:
+   - 3 dots (US, EU, APAC) with status
+   - "Verify Our Claims" → real-time check display
 
 ------------------------------------------------------------
-5. PROBLEM SECTION (EXACT COPY)
+Dev 4: GUARANTEE + DECISION + CONTRACT SNIPPET
 ------------------------------------------------------------
-
-Title:
-The Hidden Assumption in Monitoring
-
-Body:
-
-Every monitoring provider operates under the same clause:
-
-“We are not liable for missed alerts.”
-
-This means:
-
-• If they fail, you absorb the damage.
-• If an outage goes undetected, the liability remains yours.
-• If a client demands evidence, you rely on internal logs.
-
-Monitoring tools optimize detection.
-They do not assume responsibility.
-
-TrustMonitor introduces a different model.
+1. Contract Side-by-Side:
+   - Left: Typical Provider clause (#F7F8FA, faded)
+   - Right: TrustMonitor clause (White, red border, bold)
+2. Decision Section:
+   - Two boxes (desktop side-by-side, mobile stacked)
+   - Option 1: Gray, faint, unappealing
+   - Option 2: White, red accent, CTA: "DEMAND THE CONTRACT"
+   - Microcopy: 12px #475569, legal reminder
 
 ------------------------------------------------------------
-6. COMPARISON TABLE (EXACT STRUCTURE)
+Dev 5: MOBILE + PERFORMANCE + ANALYTICS + RISK CALCULATOR
 ------------------------------------------------------------
-
-Feature | Typical Monitoring | TrustMonitor
-------------------------------------------------
-Alerting | Yes | Yes
-SLA | Best Effort | Contractual
-Financial Liability | $0 | Defined Cap
-Independent Verification | No | Yes
-Risk Sharing | No | Yes
-
-------------------------------------------------------------
-7. PROOF SECTION CONTENT
-------------------------------------------------------------
-
-Subsections:
-
-Proof of Reserve
-Monitoring Regions
-Incident Methodology
-Sample Payout Ledger
-
-Ledger Example:
-
-Incident ID: #48392
-Detected: 2026-02-03T03:21:44Z
-Verified: Independent Region Match
-Payout: $200
-Status: Completed
+1. Mobile Optimization:
+   - Hero H1 fits iPhone SE
+   - Buttons minimum 44px tappable
+   - Comparison table horizontal scroll
+2. Performance Targets:
+   - FCP <1.2s, LCP <2s, CLS <0.1
+3. Analytics:
+   - HeroView, ContractDownload, ComparisonView, CalculatorUsed, CTAclick
+4. Risk Calculator:
+   - Inputs: Monthly Cost, Endpoints, Hourly Downtime
+   - Output: "You're carrying $XX,XXX in uninsured monitoring risk"
+   - Whole dollars only
 
 ------------------------------------------------------------
-8. CTO QUESTIONS SECTION
+IMPLEMENTATION TIMELINE
 ------------------------------------------------------------
+Hour 0-24: Foundation
+- Dev 1: HTML structure, CSS variables, grid
+- Dev 1: Hero + Live ticker (mock data)
+- Dev 2: Lie + Comparison table skeleton
+- All: Component communication setup
 
-Title:
-Questions to Ask Your Current Provider
+Hour 24-48: Core Sections
+- Dev 3: Proof + Ledger + Region indicators
+- Dev 4: Guarantee + Decision + Contract snippet
+- Dev 5: Mobile pass, initial performance setup
 
-1. What is your maximum financial liability per missed alert?
-2. Do you provide independently verifiable incident timestamps?
-3. Is your SLA legally enforceable or marketing language?
-
-------------------------------------------------------------
-9. RISK CALCULATOR
-------------------------------------------------------------
-
-Inputs:
-Monthly Monitoring Cost
-Number of Endpoints
-Estimated Downtime Cost Per Hour
-
-Output:
-
-"You currently carry 100% of monitoring failure risk."
+Hour 48-72: Polish & Integration
+- All: Cross-browser testing
+- Dev 5: Risk calculator implementation
+- Dev 5: Analytics wired
+- All: PR review → merge to main
 
 ------------------------------------------------------------
-10. PILOT SECTION
+CRITICAL NOTES
 ------------------------------------------------------------
-
-Title:
-Pilot With Financial Liability Active
-
-Bullet Points:
-
-• Monitor 5 critical endpoints
-• 14-day pilot
-• Full SLA active during pilot
-• Financial liability applies
-
-Button:
-Start Pilot Evaluation
+- Copy must match spec exactly — no reinterpretation
+- No marketing fluff; legal-tech tone
+- Live ticker must feel real, not mocked
+- Comparison table "What This Means" column is key psychological lever
+- Hero must shock <7 seconds
+- CTA language aggressive, unavoidable
 
 ------------------------------------------------------------
-11. FOOTER
+SUCCESS METRICS
 ------------------------------------------------------------
-
-Minimal.
-Links:
-SLA
-Legal
-Contact
-Compliance
-
-No slogans.
-No fluff.
-No extra messaging.
+- Landing page converts → not just visually pleasing
+- 5 devs execute on time → filter serious talent
+- Page communicates: serious financial/legal accountability
+- CTOs & agencies feel discomfort → instant engagement
 
 ------------------------------------------------------------
-FINAL RULE
+READY TO EXECUTE
 ------------------------------------------------------------
+Give devs this blueprint. Assign sections. Enforce PR reviews. No direct merges. 72 hours.
 
-If it looks like marketing, it is wrong.
-If it looks like a legal-tech instrument, it is correct.
-
-No developer is allowed to reinterpret the tone.
-
-All pull requests must match this document exactly.
