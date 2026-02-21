@@ -1,106 +1,93 @@
 .decision {
-  padding: var(--space-8) 0;
+  padding: clamp(var(--space-8), 8vw, var(--space-12)) 0; /* Fluid padding */
   background: var(--bg-subtle);
 }
 
 .header {
   text-align: center;
-  margin-bottom: var(--space-8);
-}
-
-.header h2 {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-10);
+  max-width: 800px;
+  margin-inline: auto; /* Centers header even if container is wide */
 }
 
 .description {
-  font-size: var(--text-lg);
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
   color: var(--text-secondary);
   line-height: var(--line-relaxed);
+  text-wrap: balance; /* Prevents awkward single-word lines */
 }
 
 .options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  /* Use 1fr for mobile, then 2 columns for tablet+ */
+  grid-template-columns: 1fr;
   gap: var(--space-6);
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .option {
   background: var(--bg-primary);
-  border: 2px solid var(--border-gray);
-  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-gray); /* Thinner border looks cleaner on PC */
+  border-radius: var(--border-radius-md);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover state only for non-touch devices to keep it snappy */
+@media (hover: hover) {
+  .option:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .option.recommended {
-  border-color: var(--link-blue);
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
-}
-
-.option.statusQuo {
-  opacity: 0.85;
-}
-
-.optionHeader {
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--border-gray);
-}
-
-.label {
-  display: inline-block;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-2);
-}
-
-.optionHeader h3 {
-  font-size: var(--text-2xl);
-  color: var(--text-primary);
+  border: 2px solid var(--link-blue);
+  box-shadow: 0 10px 25px -5px rgba(30, 64, 175, 0.1);
+  order: -1; /* Mobile First: Puts recommended on top for small screens */
 }
 
 .consequences {
   list-style: none;
-  margin-bottom: var(--space-6);
+  margin: var(--space-6) 0;
+  padding: 0;
   flex-grow: 1;
 }
 
 .consequences li {
   font-size: var(--text-base);
-  line-height: var(--line-relaxed);
+  line-height: 1.5;
   color: var(--text-primary);
   margin-bottom: var(--space-4);
-  padding-left: var(--space-4);
+  padding-left: var(--space-6); /* More space for icons */
   position: relative;
 }
 
-.statusQuo .consequences li::before {
-  content: '⚠';
+/* Better icon alignment */
+.consequences li::before {
   position: absolute;
   left: 0;
-  color: var(--accent);
+  top: 2px;
 }
 
-.recommended .consequences li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--link-blue);
-  font-weight: var(--weight-bold);
-}
+/* RESPONSIVE BREAKPOINTS */
 
-.cta {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
+/* Tablet and Small PC */
+@media (min-width: 769px) {
   .options {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .option.recommended {
+    order: 0; /* Reset order for side-by-side layout */
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .options {
+    gap: var(--space-10);
   }
 }

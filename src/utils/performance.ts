@@ -1,153 +1,126 @@
 /**
- * Performance Optimization Utilities
- * Implements best practices for Lighthouse optimization
+ * TRUSTMONITOR PERFORMANCE ENGINE v2.0
+ * Focus: LCP, INP, and Memory Safety
  */
 
-export const initPerformanceOptimizations = () => {
-  if (typeof window === 'undefined') return;
+type MetricCallback = (metric: any) => void;
 
-  // 1. LAZY LOAD IMAGES
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
+class PerformanceEngine {
+  private static instance: PerformanceEngine;
+  private observer: IntersectionObserver | null = null;
+  private readonly config = {
+    rootMargin: '50px',
+    threshold: 0.01,
+  };
+
+  private constructor() {
+    this.init();
+  }
+
+  public static getInstance(): PerformanceEngine {
+    if (!PerformanceEngine.instance) {
+      PerformanceEngine.instance = new PerformanceEngine();
+    }
+    return PerformanceEngine.instance;
+  }
+
+  private init() {
+    if (typeof window === 'undefined') return;
+    
+    this.setupResourcePrioritization();
+    this.initSmartLazyLoading();
+    this.monitorLongTasks();
+  }
+
+  /**
+   * RESOURCE PRIORITIZATION
+   * Uses Fetch Priority API for critical assets
+   */
+  private setupResourcePrioritization() {
+    // Priority hints for the LCP element (handled via DOM)
+    const lcpElement = document.querySelector('.priority-high');
+    if (lcpElement) lcpElement.setAttribute('fetchpriority', 'high');
+  }
+
+  /**
+   * SMART LAZY LOADING
+   * Uses a MutationObserver to handle dynamic content (React/Next.js)
+   */
+  private initSmartLazyLoading() {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const img = entry.target as HTMLImageElement;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-          }
-          observer.unobserve(img);
+          const target = entry.target as HTMLImageElement | HTMLVideoElement;
+          this.preloadAsset(target);
+          this.observer?.unobserve(target);
         }
       });
-    });
+    }, this.config);
 
-    document.querySelectorAll('img[data-src]').forEach((img) => {
-      imageObserver.observe(img);
-    });
+    // Initial scan + Dynamic Monitoring
+    const scan = () => {
+      document.querySelectorAll('[data-perf-lazy]').forEach(el => this.observer?.observe(el));
+    };
+
+    scan();
+    const mutObserver = new MutationObserver(debounce(scan, 250));
+    mutObserver.observe(document.body, { childList: true, subtree: true });
   }
 
-  // 2. PRELOAD CRITICAL RESOURCES
-  preloadCriticalFonts();
-
-  // 3. DEFER NON-CRITICAL SCRIPTS
-  deferNonCriticalScripts();
-
-  // 4. OPTIMIZE LAYOUT SHIFTS
-  optimizeLayoutShifts();
-
-  // 5. CACHE STRATEGY
-  implementCacheStrategy();
-};
-
-/**
- * Preload critical fonts to reduce CLS
- */
-const preloadCriticalFonts = () => {
-  const link = document.createElement('link');
-  link.rel = 'preconnect';
-  link.href = 'https://fonts.googleapis.com';
-  document.head.appendChild(link);
-};
-
-/**
- * Defer non-critical scripts
- */
-const deferNonCriticalScripts = () => {
-  const scripts = document.querySelectorAll('script[data-defer]');
-  scripts.forEach((script) => {
-    const newScript = document.createElement('script');
-    newScript.src = script.getAttribute('src') || '';
-    newScript.async = true;
-    document.body.appendChild(newScript);
-  });
-};
-
-/**
- * Optimize layout shifts by reserving space
- */
-const optimizeLayoutShifts = () => {
-  // Reserve space for images
-  const images = document.querySelectorAll('img');
-  images.forEach((img) => {
-    if (img.width && img.height) {
-      img.style.aspectRatio = `${img.width} / ${img.height}`;
+  private preloadAsset(el: any) {
+    if (el.dataset.src) {
+      el.src = el.dataset.src;
+      el.classList.add('loaded');
     }
-  });
-
-  // Reserve space for ads/embeds
-  const embeds = document.querySelectorAll('iframe, embed');
-  embeds.forEach((embed) => {
-    const el = embed as HTMLIFrameElement | HTMLEmbedElement;
-    if (el.width && el.height) {
-      el.style.aspectRatio = `${el.getAttribute('width')} / ${el.getAttribute('height')}`;
-    }
-  });
-};
-
-/**
- * Implement cache strategy for static assets
- */
-const implementCacheStrategy = () => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
-      // Service worker not available
-    });
   }
-};
 
-/**
- * Report Web Vitals
- */
-export const reportWebVitals = (metric: any) => {
-  if (process.env.NODE_ENV === 'production') {
-    // Send to analytics
-    console.log('Web Vital:', metric);
-  }
-};
-
-/**
- * Memoization helper for expensive computations
- */
-export const memoize = <T extends (...args: any[]) => any>(fn: T): T => {
-  const cache = new Map();
-  return ((...args: any[]) => {
-    const key = JSON.stringify(args);
-    if (cache.has(key)) {
-      return cache.get(key);
+  /**
+   * LONG TASK MONITORING
+   * Detects Main Thread blocking > 50ms
+   */
+  private monitorLongTasks() {
+    if ('PerformanceObserver' in window) {
+      const longTaskObserver = new PerformanceObserver((list) => {
+        list.getEntries().forEach(entry => {
+          this.reportMetric({ name: 'LONG_TASK', duration: entry.duration, start: entry.startTime });
+        });
+      });
+      longTaskObserver.observe({ entryTypes: ['longtask'] });
     }
-    const result = fn(...args);
-    cache.set(key, result);
+  }
+
+  public reportMetric(metric: any) {
+    // In production, this pipes to an internal ELK stack or Grafana
+    if (process.env.NODE_ENV === 'production') {
+      const body = JSON.stringify(metric);
+      (navigator.sendBeacon && navigator.sendBeacon('/api/v1/perf', body)) || 
+      fetch('/api/v1/perf', { method: 'POST', body, keepalive: true });
+    }
+  }
+}
+
+/**
+ * MEMOIZATION v2: WeakMap for Garbage Collection safety
+ */
+export const memoize = <T extends object, R>(fn: (arg: T) => R): ((arg: T) => R) => {
+  const cache = new WeakMap<T, R>();
+  return (arg: T): R => {
+    if (cache.has(arg)) return cache.get(arg)!;
+    const result = fn(arg);
+    cache.set(arg, result);
     return result;
-  }) as T;
+  };
 };
 
 /**
- * Debounce function for event handlers
+ * DEBOUNCE: Standard implementation
  */
-export const debounce = <T extends (...args: any[]) => any>(
-  fn: T,
-  delay: number
-): ((...args: Parameters<T>) => void) => {
-  let timeoutId: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
+export const debounce = (fn: Function, ms = 300) => {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: any, ...args: any[]) {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
+    timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
 };
 
-/**
- * Throttle function for event handlers
- */
-export const throttle = <T extends (...args: any[]) => any>(
-  fn: T,
-  limit: number
-): ((...args: Parameters<T>) => void) => {
-  let inThrottle: boolean;
-  return (...args: Parameters<T>) => {
-    if (!inThrottle) {
-      fn(...args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-};
+export const perfEngine = PerformanceEngine.getInstance();

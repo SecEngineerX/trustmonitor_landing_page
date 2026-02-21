@@ -11,13 +11,14 @@ export const SITE_CONFIG = {
 
 // HERO SECTION (Nuclear Version)
 export const HERO_CONTENT = {
-  timestamp: 'February 10, 2026 — 2:47 AM',
-  incident: 'Your Payment Gateway\nWas Down for 22 Minutes.',
+  timestamp: 'February 10, 2026 2:47 AM',
+  incident: '22-Minute Revenue Interruption.\nNo Detection.',
   pain: [
-    "Your monitoring tool didn't alert you.",
-    'You lost $43,000 in transactions.',
-    'Their liability? $0.',
+    "Monitoring failed to escalate.",
+    'Financial exposure accumulated in real time.',
+    'Liability coverage: $0.',
   ],
+
   question: 'What if they had to pay you when they failed?',
   cta: {
     primary: 'CALCULATE YOUR EXPOSURE',
@@ -121,9 +122,9 @@ export const COMPARISON_CONTENT = {
     },
     {
       name: 'TrustMonitor',
-      liability: '$200-$1,000 per incident',
+      liability: '$100-$1,000 per incident',
       evidence: 'Cryptographically signed, publicly verifiable',
-      payout: '7 business days',
+      payout: '3 business days',
       risk: 'Shared liability model',
     },
   ],
@@ -136,36 +137,36 @@ export const GUARANTEE_CONTENT = {
   tiers: [
     {
       name: 'Standard',
-      price: 499,
+      price: 299,
       interval: 'month',
-      liability: 200,
+      liability: 100,
       checks: 60,
-      regions: 3,
+      regions: 2,
       support: 'Email (8hr response)',
       features: [
         'HTTP/HTTPS monitoring',
-        'Multi-region checks (3+)',
+        'Multi-region checks (2)',
         'OpenTimestamps verification',
         '30-day evidence retention',
-        '$200 per verified incident',
+        '$100 per verified incident',
       ],
       badge: undefined,
     },
     {
       name: 'Professional',
-      price: 2499,
+      price: 499,
       interval: 'month',
-      liability: 500,
+      liability: 200,
       checks: 180,
       regions: 5,
       support: 'Priority (2hr response)',
       features: [
         'Everything in Standard',
         'API/TCP/DNS monitoring',
-        'Multi-region checks (5+)',
+        'Multi-region checks (3+)',
         'Custom check intervals (10s minimum)',
         '7-year evidence retention',
-        '$500 per verified incident',
+        '$200 per verified incident',
         'SLA review with legal team',
       ],
       badge: 'MOST SELECTED',
@@ -205,7 +206,7 @@ export const DECISION_CONTENT = {
       title: 'Continue Current Vendor',
       label: 'Status Quo',
       consequences: [
-        'Pay $500-$5,000/month in monitoring fees',
+        'Pay $99-$5,000/month in monitoring fees',
         'Absorb 100% of incident losses',
         'Vendor liability: $0',
         'Next incident: Same outcome',
@@ -216,8 +217,8 @@ export const DECISION_CONTENT = {
       title: 'Switch to TrustMonitor',
       label: 'Liability Transfer',
       consequences: [
-        'Pay $499-$2,499/month in monitoring fees',
-        'TrustMonitor pays $200-$500 per verified miss',
+        'Pay $299-$499/month in monitoring fees',
+        'TrustMonitor pays $100-$200 per verified miss',
         'Cryptographic proof for every incident',
         'Defined risk model vs. undefined losses',
       ],
@@ -231,7 +232,7 @@ export const WAITLIST_CONTENT = {
   heading: 'Founding Client Qualification',
   subheading: 'TrustMonitor deploys exclusively for organizations where undetected downtime creates measurable financial loss.',
   scarcity: `${SITE_CONFIG.foundingSlotsRemaining} founding slots remaining`,
-  timeline: '48-hour response',
+  timeline: '72-hour response',
   fields: {
     contact: 'Primary Contact',
     organization: 'Organization Profile',
