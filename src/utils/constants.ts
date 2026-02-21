@@ -175,7 +175,7 @@ export const GUARANTEE_CONTENT = {
       name: 'Enterprise',
       price: 1,499,
       interval: 'custom',
-      liability: 7000,
+      liability: 700,
       checks: 'Unlimited',
       regions: 'Custom',
       support: 'Dedicated Slack channel',
